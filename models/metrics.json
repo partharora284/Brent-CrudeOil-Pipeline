@@ -1,0 +1,25 @@
+{
+  "standard_accuracy": 0.5333333333333333,
+  "naive_always_up_accuracy": 0.5261261261261261,
+  "n_test_days": 555,
+  "n_trades": 359,
+  "pct_days_traded": 0.6468468468468469,
+  "high_confidence_accuracy": 0.5487465181058496,
+  "logistic_regression_accuracy": 0.4900900900900901,
+  "cv_best_accuracy": 0.5347708894878707,
+  "best_params": {
+    "subsample": 0.7,
+    "reg_lambda": 10.0,
+    "num_leaves": 15,
+    "n_estimators": 100,
+    "min_child_samples": 50,
+    "learning_rate": 0.01,
+    "colsample_bytree": 0.7
+  },
+  "horizon_days": 3,
+  "selected_model": "lightgbm",
+  "train_start": "2015-12-22",
+  "train_end": "2024-08-09",
+  "test_start": "2024-08-15",
+  "test_end": "2026-10-08"
+}

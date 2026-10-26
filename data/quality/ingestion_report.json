@@ -1,0 +1,41 @@
+{
+  "run_at": "2026-10-26T06:49:33.472118",
+  "master_rows": 3051,
+  "master_start": "2015-01-02",
+  "master_end": "2026-10-23",
+  "assets": {
+    "brent": {
+      "asset": "brent",
+      "source": "Brent_Oil_Futures_Historical_Data.csv",
+      "sha256": "29e4d761fc10d55dd53aea5f224a9350721d67e6b1f64b89a8484739b0a87f5f",
+      "rows_raw": 3042,
+      "rows_valid": 3042,
+      "start": "2015-01-02",
+      "end": "2026-10-12",
+      "errors": [],
+      "warnings": []
+    },
+    "wti": {
+      "asset": "wti",
+      "source": "Crude_Oil_WTI_Futures_Historical_Data.csv",
+      "sha256": "1932ec88a2a4a451416d43d4dfe2aea26009dc73f42b5e1e6c574f24a6ccfd4f",
+      "rows_raw": 3097,
+      "rows_valid": 3097,
+      "start": "2015-01-01",
+      "end": "2026-10-12",
+      "errors": [],
+      "warnings": []
+    },
+    "dxy": {
+      "asset": "dxy",
+      "source": "US_Dollar_Index_Historical_Data.csv",
+      "sha256": "52d4ecef61607e0d3970928a7a25c62e5763a2b4d1c916063a73609f90f94f1b",
+      "rows_raw": 3065,
+      "rows_valid": 3065,
+      "start": "2015-01-01",
+      "end": "2026-10-12",
+      "errors": [],
+      "warnings": []
+    }
+  }
+}

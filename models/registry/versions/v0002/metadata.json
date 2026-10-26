@@ -1,0 +1,306 @@
+{
+  "model_name": "xgboost",
+  "trained_at": "2026-10-25T19:38:04+00:00",
+  "feature_schema": {
+    "columns": [
+      "spread_brent_wti",
+      "ratio_gasoil_brent",
+      "spread_brent_dxy",
+      "brent_log_return",
+      "wti_log_return",
+      "dxy_log_return",
+      "gasoil_log_return",
+      "rolling_corr_brent_dxy_14d",
+      "rolling_corr_brent_wti_14d",
+      "brent_volatility_7d",
+      "brent_volatility_30d",
+      "high_low_spread_ratio",
+      "distance_ema20",
+      "distance_sma50",
+      "distance_sma200",
+      "brent_return_lag1",
+      "brent_return_lag2",
+      "brent_return_lag3",
+      "wti_return_lag1",
+      "dxy_return_lag1",
+      "day_of_week",
+      "month_of_year"
+    ],
+    "hash": "95eba81014858eb0"
+  },
+  "target": {
+    "column": "target_1d_class",
+    "horizon_days": 1,
+    "definition": "1 if Brent's settlement on the NEXT trading session >= the settlement of the session the features describe (Up/Flat), else 0 (Down). Features use data up to that completed session only, so the prediction is made before the next session settles. NaN (unlabelled) until that session has settled."
+  },
+  "data": {
+    "train_start": "2015-12-22",
+    "train_end": "2024-08-22",
+    "test_start": "2024-08-26",
+    "test_end": "2026-10-22",
+    "n_train": 2239,
+    "n_test": 559,
+    "embargo_rows": 1,
+    "train_fraction": 0.8,
+    "final_fit": "train window only (deployed model is the validated one)"
+  },
+  "thresholds": {
+    "conf_upper": 0.55,
+    "conf_lower": 0.45
+  },
+  "metrics": {
+    "standard_accuracy": 0.5330948121645797,
+    "precision": 0.5372549019607843,
+    "recall": 0.9163879598662207,
+    "f1": 0.6773794808405439,
+    "roc_auc": 0.5156290198096218,
+    "confusion_matrix": [
+      [
+        24,
+        236
+      ],
+      [
+        25,
+        274
+      ]
+    ],
+    "n_test_days": 559,
+    "naive_always_up_accuracy": 0.5348837209302325,
+    "n_trades": 244,
+    "pct_days_traded": 0.4364937388193202,
+    "high_confidence_accuracy": 0.569672131147541,
+    "cv_accuracy": 0.5415549597855228,
+    "params": {
+      "subsample": 0.9,
+      "reg_lambda": 5.0,
+      "n_estimators": 100,
+      "max_depth": 5,
+      "learning_rate": 0.01,
+      "colsample_bytree": 0.8
+    }
+  },
+  "comparison": {
+    "logistic_regression": {
+      "standard_accuracy": 0.518783542039356,
+      "precision": 0.538860103626943,
+      "recall": 0.6956521739130435,
+      "f1": 0.6072992700729927,
+      "roc_auc": 0.52191921790584,
+      "confusion_matrix": [
+        [
+          82,
+          178
+        ],
+        [
+          91,
+          208
+        ]
+      ],
+      "n_test_days": 559,
+      "naive_always_up_accuracy": 0.5348837209302325,
+      "n_trades": 231,
+      "pct_days_traded": 0.41323792486583183,
+      "high_confidence_accuracy": 0.5584415584415584,
+      "cv_accuracy": 0.5190348525469168,
+      "params": {}
+    },
+    "ridge_classifier": {
+      "standard_accuracy": 0.5223613595706619,
+      "precision": 0.5313725490196078,
+      "recall": 0.9063545150501672,
+      "f1": 0.6699629171817059,
+      "roc_auc": 0.5065474659120144,
+      "confusion_matrix": [
+        [
+          21,
+          239
+        ],
+        [
+          28,
+          271
+        ]
+      ],
+      "n_test_days": 559,
+      "naive_always_up_accuracy": 0.5348837209302325,
+      "n_trades": 177,
+      "pct_days_traded": 0.31663685152057247,
+      "high_confidence_accuracy": 0.5084745762711864,
+      "cv_accuracy": 0.5265415549597855,
+      "params": {
+        "ridge__alpha": 1000.0
+      }
+    },
+    "xgboost": {
+      "standard_accuracy": 0.5330948121645797,
+      "precision": 0.5372549019607843,
+      "recall": 0.9163879598662207,
+      "f1": 0.6773794808405439,
+      "roc_auc": 0.5156290198096218,
+      "confusion_matrix": [
+        [
+          24,
+          236
+        ],
+        [
+          25,
+          274
+        ]
+      ],
+      "n_test_days": 559,
+      "naive_always_up_accuracy": 0.5348837209302325,
+      "n_trades": 244,
+      "pct_days_traded": 0.4364937388193202,
+      "high_confidence_accuracy": 0.569672131147541,
+      "cv_accuracy": 0.5415549597855228,
+      "params": {
+        "subsample": 0.9,
+        "reg_lambda": 5.0,
+        "n_estimators": 100,
+        "max_depth": 5,
+        "learning_rate": 0.01,
+        "colsample_bytree": 0.8
+      }
+    },
+    "lightgbm": {
+      "standard_accuracy": 0.5330948121645797,
+      "precision": 0.5357142857142857,
+      "recall": 0.9531772575250836,
+      "f1": 0.6859205776173285,
+      "roc_auc": 0.5057627990738359,
+      "confusion_matrix": [
+        [
+          13,
+          247
+        ],
+        [
+          14,
+          285
+        ]
+      ],
+      "n_test_days": 559,
+      "naive_always_up_accuracy": 0.5348837209302325,
+      "n_trades": 227,
+      "pct_days_traded": 0.40608228980322003,
+      "high_confidence_accuracy": 0.5506607929515418,
+      "cv_accuracy": 0.5351206434316353,
+      "params": {
+        "subsample": 0.9,
+        "reg_lambda": 1.0,
+        "num_leaves": 7,
+        "n_estimators": 100,
+        "min_child_samples": 50,
+        "learning_rate": 0.01,
+        "colsample_bytree": 0.9
+      }
+    }
+  },
+  "baselines": {
+    "always_up": {
+      "standard_accuracy": 0.5348837209302325,
+      "precision": 0.5348837209302325,
+      "recall": 1.0,
+      "f1": 0.696969696969697,
+      "roc_auc": null,
+      "confusion_matrix": [
+        [
+          0,
+          260
+        ],
+        [
+          0,
+          299
+        ]
+      ],
+      "n_test_days": 559,
+      "naive_always_up_accuracy": 0.5348837209302325,
+      "n_trades": 559,
+      "pct_days_traded": 1.0,
+      "high_confidence_accuracy": 0.5348837209302325,
+      "predicts_class": 1
+    },
+    "majority_class_train": {
+      "standard_accuracy": 0.5348837209302325,
+      "precision": 0.5348837209302325,
+      "recall": 1.0,
+      "f1": 0.696969696969697,
+      "roc_auc": null,
+      "confusion_matrix": [
+        [
+          0,
+          260
+        ],
+        [
+          0,
+          299
+        ]
+      ],
+      "n_test_days": 559,
+      "naive_always_up_accuracy": 0.5348837209302325,
+      "n_trades": 559,
+      "pct_days_traded": 1.0,
+      "high_confidence_accuracy": 0.5348837209302325,
+      "predicts_class": 1
+    }
+  },
+  "selection": {
+    "criterion": "max mean TimeSeriesSplit CV accuracy on training window",
+    "rationale": "xgboost had the highest mean rolling-origin CV accuracy on the training window (0.5416); CV ranking: xgboost=0.5416, lightgbm=0.5351, ridge_classifier=0.5265, logistic_regression=0.5190. Test set was not used for selection. Gate FAILED: test accuracy 0.5331 vs best baseline 0.5349, ROC-AUC 0.5156290198096218.",
+    "cv_scores": {
+      "logistic_regression": 0.5190348525469168,
+      "ridge_classifier": 0.5265415549597855,
+      "xgboost": 0.5415549597855228,
+      "lightgbm": 0.5351206434316353
+    }
+  },
+  "validation": {
+    "passed": false,
+    "checks": {
+      "accuracy_beats_all_baselines": false,
+      "roc_auc_above_0.5": true
+    },
+    "best_baseline_accuracy": 0.5348837209302325,
+    "edge_over_best_baseline": -0.0017889087656528524,
+    "edge_z_score_naive": -0.08479761465692427,
+    "edge_significant_naive_5pct": false,
+    "note": "Single-session direction is close to a coin flip; a small edge on this many sessions is weak evidence."
+  },
+  "preprocessing": "FeaturePreprocessor (schema/order/finite checks); scaling, if any, is inside the model Pipeline.",
+  "explainability": "TreeSHAP",
+  "libraries": {
+    "sklearn": "1.9.1",
+    "xgboost": "3.4.1",
+    "lightgbm": "4.7.0",
+    "pandas": "3.1.0",
+    "numpy": "2.5.4"
+  },
+  "legacy_metrics": {
+    "standard_accuracy": 0.5330948121645797,
+    "naive_always_up_accuracy": 0.5348837209302325,
+    "n_test_days": 559,
+    "n_trades": 244,
+    "pct_days_traded": 0.4364937388193202,
+    "high_confidence_accuracy": 0.569672131147541,
+    "logistic_regression_accuracy": 0.518783542039356,
+    "cv_best_accuracy": 0.5415549597855228,
+    "best_params": {
+      "subsample": 0.9,
+      "reg_lambda": 5.0,
+      "n_estimators": 100,
+      "max_depth": 5,
+      "learning_rate": 0.01,
+      "colsample_bytree": 0.8
+    },
+    "horizon_days": 1,
+    "selected_model": "xgboost",
+    "train_start": "2015-12-22",
+    "train_end": "2024-08-22",
+    "test_start": "2024-08-26",
+    "test_end": "2026-10-22"
+  },
+  "version": "v0002",
+  "registered_at": "2026-10-25T19:38:04+00:00",
+  "artifacts": {
+    "model.joblib": "2a3e599b9b5731eec999e0484205c36b816ccfc09a40454741815d897fcb9993",
+    "preprocessor.joblib": "280111861c999a82193ec854ad71847721115a52bab5e169e9ff37c97886a56e"
+  }
+}

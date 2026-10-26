@@ -1,0 +1,308 @@
+{
+  "model_name": "lightgbm",
+  "trained_at": "2026-10-25T13:49:15+00:00",
+  "feature_schema": {
+    "columns": [
+      "spread_brent_wti",
+      "ratio_gasoil_brent",
+      "spread_brent_dxy",
+      "brent_log_return",
+      "wti_log_return",
+      "dxy_log_return",
+      "gasoil_log_return",
+      "rolling_corr_brent_dxy_14d",
+      "rolling_corr_brent_wti_14d",
+      "brent_volatility_7d",
+      "brent_volatility_30d",
+      "high_low_spread_ratio",
+      "distance_ema20",
+      "distance_sma50",
+      "distance_sma200",
+      "brent_return_lag1",
+      "brent_return_lag2",
+      "brent_return_lag3",
+      "wti_return_lag1",
+      "dxy_return_lag1",
+      "day_of_week",
+      "month_of_year"
+    ],
+    "hash": "d87ac0bb5394aef6"
+  },
+  "target": {
+    "column": "target_3d_class",
+    "horizon_days": 3,
+    "definition": "1 if Brent settlement 3 trading days ahead >= today's settlement (Up/Flat), else 0 (Down); NaN (unlabelled) when the future price is not yet known."
+  },
+  "data": {
+    "train_start": "2015-12-22",
+    "train_end": "2024-08-09",
+    "test_start": "2024-08-15",
+    "test_end": "2026-10-08",
+    "n_train": 2230,
+    "n_test": 555,
+    "embargo_rows": 3,
+    "train_fraction": 0.8,
+    "final_fit": "train window only (deployed model is the validated one)"
+  },
+  "thresholds": {
+    "conf_upper": 0.55,
+    "conf_lower": 0.45
+  },
+  "metrics": {
+    "standard_accuracy": 0.5333333333333333,
+    "precision": 0.5319148936170213,
+    "recall": 0.9417808219178082,
+    "f1": 0.6798516687268232,
+    "roc_auc": 0.538895254961196,
+    "confusion_matrix": [
+      [
+        21,
+        242
+      ],
+      [
+        17,
+        275
+      ]
+    ],
+    "n_test_days": 555,
+    "naive_always_up_accuracy": 0.5261261261261261,
+    "n_trades": 359,
+    "pct_days_traded": 0.6468468468468469,
+    "high_confidence_accuracy": 0.5487465181058496,
+    "cv_accuracy": 0.5347708894878707,
+    "params": {
+      "subsample": 0.7,
+      "reg_lambda": 10.0,
+      "num_leaves": 15,
+      "n_estimators": 100,
+      "min_child_samples": 50,
+      "learning_rate": 0.01,
+      "colsample_bytree": 0.7
+    }
+  },
+  "comparison": {
+    "logistic_regression": {
+      "standard_accuracy": 0.4900900900900901,
+      "precision": 0.5104895104895105,
+      "recall": 0.75,
+      "f1": 0.6074895977808599,
+      "roc_auc": 0.5094796603989791,
+      "confusion_matrix": [
+        [
+          53,
+          210
+        ],
+        [
+          73,
+          219
+        ]
+      ],
+      "n_test_days": 555,
+      "naive_always_up_accuracy": 0.5261261261261261,
+      "n_trades": 336,
+      "pct_days_traded": 0.6054054054054054,
+      "high_confidence_accuracy": 0.5238095238095238,
+      "cv_accuracy": 0.5067385444743936,
+      "params": {}
+    },
+    "ridge_classifier": {
+      "standard_accuracy": 0.4954954954954955,
+      "precision": 0.513215859030837,
+      "recall": 0.797945205479452,
+      "f1": 0.6246648793565683,
+      "roc_auc": 0.49910151570394284,
+      "confusion_matrix": [
+        [
+          42,
+          221
+        ],
+        [
+          59,
+          233
+        ]
+      ],
+      "n_test_days": 555,
+      "naive_always_up_accuracy": 0.5261261261261261,
+      "n_trades": 269,
+      "pct_days_traded": 0.4846846846846847,
+      "high_confidence_accuracy": 0.5278810408921933,
+      "cv_accuracy": 0.5288409703504043,
+      "params": {
+        "ridge__alpha": 1000.0
+      }
+    },
+    "xgboost": {
+      "standard_accuracy": 0.5405405405405406,
+      "precision": 0.5351043643263758,
+      "recall": 0.9657534246575342,
+      "f1": 0.6886446886446886,
+      "roc_auc": 0.5560315641439658,
+      "confusion_matrix": [
+        [
+          18,
+          245
+        ],
+        [
+          10,
+          282
+        ]
+      ],
+      "n_test_days": 555,
+      "naive_always_up_accuracy": 0.5261261261261261,
+      "n_trades": 394,
+      "pct_days_traded": 0.7099099099099099,
+      "high_confidence_accuracy": 0.5558375634517766,
+      "cv_accuracy": 0.5293800539083557,
+      "params": {
+        "subsample": 0.7,
+        "reg_lambda": 10.0,
+        "n_estimators": 100,
+        "max_depth": 4,
+        "learning_rate": 0.01,
+        "colsample_bytree": 0.7
+      }
+    },
+    "lightgbm": {
+      "standard_accuracy": 0.5333333333333333,
+      "precision": 0.5319148936170213,
+      "recall": 0.9417808219178082,
+      "f1": 0.6798516687268232,
+      "roc_auc": 0.538895254961196,
+      "confusion_matrix": [
+        [
+          21,
+          242
+        ],
+        [
+          17,
+          275
+        ]
+      ],
+      "n_test_days": 555,
+      "naive_always_up_accuracy": 0.5261261261261261,
+      "n_trades": 359,
+      "pct_days_traded": 0.6468468468468469,
+      "high_confidence_accuracy": 0.5487465181058496,
+      "cv_accuracy": 0.5347708894878707,
+      "params": {
+        "subsample": 0.7,
+        "reg_lambda": 10.0,
+        "num_leaves": 15,
+        "n_estimators": 100,
+        "min_child_samples": 50,
+        "learning_rate": 0.01,
+        "colsample_bytree": 0.7
+      }
+    }
+  },
+  "baselines": {
+    "always_up": {
+      "standard_accuracy": 0.5261261261261261,
+      "precision": 0.5261261261261261,
+      "recall": 1.0,
+      "f1": 0.6894923258559622,
+      "roc_auc": null,
+      "confusion_matrix": [
+        [
+          0,
+          263
+        ],
+        [
+          0,
+          292
+        ]
+      ],
+      "n_test_days": 555,
+      "naive_always_up_accuracy": 0.5261261261261261,
+      "n_trades": 555,
+      "pct_days_traded": 1.0,
+      "high_confidence_accuracy": 0.5261261261261261,
+      "predicts_class": 1
+    },
+    "majority_class_train": {
+      "standard_accuracy": 0.5261261261261261,
+      "precision": 0.5261261261261261,
+      "recall": 1.0,
+      "f1": 0.6894923258559622,
+      "roc_auc": null,
+      "confusion_matrix": [
+        [
+          0,
+          263
+        ],
+        [
+          0,
+          292
+        ]
+      ],
+      "n_test_days": 555,
+      "naive_always_up_accuracy": 0.5261261261261261,
+      "n_trades": 555,
+      "pct_days_traded": 1.0,
+      "high_confidence_accuracy": 0.5261261261261261,
+      "predicts_class": 1
+    }
+  },
+  "selection": {
+    "criterion": "max mean TimeSeriesSplit CV accuracy on training window",
+    "rationale": "lightgbm had the highest mean rolling-origin CV accuracy on the training window (0.5348); CV ranking: lightgbm=0.5348, xgboost=0.5294, ridge_classifier=0.5288, logistic_regression=0.5067. Test set was not used for selection. Gate PASSED: test accuracy 0.5333 vs best baseline 0.5261, ROC-AUC 0.538895254961196.",
+    "cv_scores": {
+      "logistic_regression": 0.5067385444743936,
+      "ridge_classifier": 0.5288409703504043,
+      "xgboost": 0.5293800539083557,
+      "lightgbm": 0.5347708894878707
+    }
+  },
+  "validation": {
+    "passed": true,
+    "checks": {
+      "accuracy_beats_all_baselines": true,
+      "roc_auc_above_0.5": true
+    },
+    "best_baseline_accuracy": 0.5261261261261261,
+    "edge_over_best_baseline": 0.007207207207207245,
+    "edge_z_score_naive": 0.3400456181883353,
+    "edge_significant_naive_5pct": false,
+    "note": "Overlapping 3-day labels make the effective sample smaller than n_test_days; treat small edges as unproven."
+  },
+  "preprocessing": "FeaturePreprocessor (schema/order/finite checks); scaling, if any, is inside the model Pipeline.",
+  "explainability": "TreeSHAP",
+  "libraries": {
+    "sklearn": "1.9.1",
+    "xgboost": "3.4.1",
+    "lightgbm": "4.7.0",
+    "pandas": "3.1.0",
+    "numpy": "2.5.4"
+  },
+  "legacy_metrics": {
+    "standard_accuracy": 0.5333333333333333,
+    "naive_always_up_accuracy": 0.5261261261261261,
+    "n_test_days": 555,
+    "n_trades": 359,
+    "pct_days_traded": 0.6468468468468469,
+    "high_confidence_accuracy": 0.5487465181058496,
+    "logistic_regression_accuracy": 0.4900900900900901,
+    "cv_best_accuracy": 0.5347708894878707,
+    "best_params": {
+      "subsample": 0.7,
+      "reg_lambda": 10.0,
+      "num_leaves": 15,
+      "n_estimators": 100,
+      "min_child_samples": 50,
+      "learning_rate": 0.01,
+      "colsample_bytree": 0.7
+    },
+    "horizon_days": 3,
+    "selected_model": "lightgbm",
+    "train_start": "2015-12-22",
+    "train_end": "2024-08-09",
+    "test_start": "2024-08-15",
+    "test_end": "2026-10-08"
+  },
+  "version": "v0003",
+  "registered_at": "2026-10-25T13:49:15+00:00",
+  "artifacts": {
+    "model.joblib": "2e52428da77a0c54b6aa6100acaef7aeb284ba5a3e88b79b1cd481df9bc047ed",
+    "preprocessor.joblib": "df9f7a3353143fc8196f6998b145ba1399d59bea259df1b5ee1856221ae2c016"
+  }
+}

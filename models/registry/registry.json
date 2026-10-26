@@ -1,0 +1,21 @@
+{
+  "approved": null,
+  "approved_history": [
+    "v0001"
+  ],
+  "versions": {
+    "v0001": {
+      "status": "retired",
+      "model_name": "lightgbm",
+      "trained_at": "2026-10-23T00:06:01+00:00",
+      "validation_passed": true,
+      "note": "Trained for the old 3-trading-day target (target_3d_class). Incompatible with the current-session (1-day) target; cannot be loaded. Run `python -m src.train`."
+    },
+    "v0007": {
+      "status": "rejected",
+      "model_name": "xgboost",
+      "trained_at": "2026-10-26T06:49:51+00:00",
+      "validation_passed": false
+    }
+  }
+}
